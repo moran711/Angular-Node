@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -6,10 +6,10 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { Apollo, gql } from 'apollo-angular';
-import { setToLocalStorage } from 'src/utils/localStorage';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+import {Apollo, gql} from 'apollo-angular';
+import {setToLocalStorage} from 'src/utils/localStorage';
 
 export interface ILoginedUser {
   _id?: string;
@@ -34,14 +34,14 @@ export class LoginFormComponent {
   constructor(
     private apollo: Apollo,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.pattern(
-          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
+          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
         ),
       ]),
     });
@@ -60,10 +60,10 @@ export class LoginFormComponent {
             }
           }
         `,
-        variables: { loginInput: this.loginForm.value },
+        variables: {loginInput: this.loginForm.value},
       })
       .subscribe(
-        ({ data }) => {
+        ({data}) => {
           setToLocalStorage('token', data?.loginUser.token || '');
           this.router.navigate(['']);
           this._snackBar.open('You have successfully logged in!', 'Close', {
@@ -72,7 +72,7 @@ export class LoginFormComponent {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
   }
 }

@@ -1,4 +1,4 @@
-import UserController from "./user.controller";
+import UserController from './user.controller';
 
 const userQuery = {
   getAllUsers: () => UserController.getAllUsers(),
@@ -10,4 +10,4 @@ const userMutation = {
   loginUser: async (parent, args) => UserController.loginUser(args.loginInput),
 };
 
-export { userMutation, userQuery };
+export {userMutation, userQuery};

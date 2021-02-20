@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { gql } from '@apollo/client/core';
-import { Apollo } from 'apollo-angular';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {gql} from '@apollo/client/core';
+import {Apollo} from 'apollo-angular';
 
 interface IRegisterUser {
   _id: string;
@@ -35,7 +35,7 @@ export class RegistrationFormComponent {
         Validators.minLength(2),
         Validators.maxLength(20),
         Validators.pattern(
-          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
+          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
         ),
       ]),
       firstName: new FormControl('', [
@@ -65,10 +65,10 @@ export class RegistrationFormComponent {
             }
           }
         `,
-        variables: { user: this.registrationForm.value },
+        variables: {user: this.registrationForm.value},
       })
       .subscribe(
-        ({ data }) => {
+        ({data}) => {
           if (data?.registerUser.firstName) {
             this._snackBar.open('You have successfully registared!', 'Close', {
               duration: 2000,
@@ -79,7 +79,7 @@ export class RegistrationFormComponent {
           this._snackBar.open('Something went wrong :(', 'Close', {
             duration: 2000,
           });
-        }
+        },
       );
   }
 }

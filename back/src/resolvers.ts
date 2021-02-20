@@ -1,4 +1,4 @@
-import { userMutation, userQuery } from "./modules/user/user.resolver";
+import {userMutation, userQuery} from './modules/user/user.resolver';
 
 const resolvers = {
   Query: {
@@ -9,4 +9,4 @@ const resolvers = {
   },
 };
 
-export { resolvers };
+export {resolvers};

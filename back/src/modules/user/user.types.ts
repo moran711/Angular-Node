@@ -31,4 +31,4 @@ const userTypes = `
   }
 `;
 
-export { userTypes, userInputs };
+export {userTypes, userInputs};

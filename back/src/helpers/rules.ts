@@ -1,9 +1,9 @@
-import { ApolloError } from "apollo-server";
+import {ApolloError} from 'apollo-server';
 
-const { rule, and } = require("graphql-shield");
+const {rule, and} = require('graphql-shield');
 
 const isAuthorized = rule()((parent, args, context, info) =>
-  context.user ? true : new ApolloError("USER_NOT_AUTHORIZED", "401")
+  context.user ? true : new ApolloError('USER_NOT_AUTHORIZED', '401'),
 );
 
 const hasRoles = (roles) =>
@@ -12,8 +12,8 @@ const hasRoles = (roles) =>
     rule()((parent, args, context, info) =>
       roles.includes(context.user.role)
         ? true
-        : new ApolloError("INVALID_PERMISSIONS", "403")
-    )
+        : new ApolloError('INVALID_PERMISSIONS', '403'),
+    ),
   );
 
 const isTheSameUser = and(
@@ -21,8 +21,8 @@ const isTheSameUser = and(
   rule()((parent, args, context, info) =>
     `${context.user._id}` === args.id
       ? true
-      : new ApolloError("WRONG_CREDENTIALS", "401")
-  )
+      : new ApolloError('WRONG_CREDENTIALS', '401'),
+  ),
 );
 
 module.exports = {

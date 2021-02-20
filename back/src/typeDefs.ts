@@ -1,5 +1,5 @@
-import { gql } from "apollo-server";
-import { userInputs, userTypes } from "./modules/user/user.types";
+import {gql} from 'apollo-server';
+import {userInputs, userTypes} from './modules/user/user.types';
 
 const typeDefs = gql`
   ${userTypes}
@@ -14,4 +14,4 @@ const typeDefs = gql`
   }
 `;
 
-export { typeDefs };
+export {typeDefs};

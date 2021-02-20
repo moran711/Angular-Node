@@ -1,5 +1,5 @@
-import userModel from "./user.model";
-import { IRegisterUserCrypted } from "./user.interfaces";
+import userModel from './user.model';
+import {IRegisterUserCrypted} from './user.interfaces';
 class UserService {
   async registerUser({
     firstName,
@@ -16,7 +16,7 @@ class UserService {
     return await user.save();
   }
   async getUserByEmail(email: string) {
-    return await userModel.findOne({ email }).exec();
+    return await userModel.findOne({email}).exec();
   }
   async getAllUsers() {
     return await userModel.find();

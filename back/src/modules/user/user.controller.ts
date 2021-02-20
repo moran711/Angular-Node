@@ -1,14 +1,14 @@
-import { UserInputError } from "apollo-server";
-import bcrypt from "bcryptjs";
-import generateToken from "../../helpers/generateToken";
-import verifyUser from "../../helpers/verifyToken";
+import {UserInputError} from 'apollo-server';
+import bcrypt from 'bcryptjs';
+import generateToken from '../../helpers/generateToken';
+import verifyUser from '../../helpers/verifyToken';
 import {
   ILoginedUser,
   ILoginInput,
   IRegisterUserInput,
   IUser,
-} from "./user.interfaces";
-import UserService from "./user.service";
+} from './user.interfaces';
+import UserService from './user.service';
 
 class UserController {
   async getAllUsers() {
@@ -34,7 +34,7 @@ class UserController {
     password,
   }: IRegisterUserInput): Promise<IUser> {
     if (await UserService.getUserByEmail(email)) {
-      throw new UserInputError("USER_ALREADY_EXIST", { statusCode: 400 });
+      throw new UserInputError('USER_ALREADY_EXIST', {statusCode: 400});
     }
     const encryptedPassword = await bcrypt.hash(password, 12);
     return await UserService.registerUser({
@@ -44,17 +44,17 @@ class UserController {
       encryptedPassword,
     });
   }
-  async loginUser({ email, password }: ILoginInput): Promise<ILoginedUser> {
+  async loginUser({email, password}: ILoginInput): Promise<ILoginedUser> {
     const user = await UserService.getUserByEmail(email);
 
     if (!user) {
-      throw new UserInputError("WRONG_CREDENTIALS", { statusCode: 400 });
+      throw new UserInputError('WRONG_CREDENTIALS', {statusCode: 400});
     }
 
     const match = await bcrypt.compare(password, user.credential);
 
     if (!match) {
-      throw new UserInputError("WRONG_CREDENTIALS", { statusCode: 400 });
+      throw new UserInputError('WRONG_CREDENTIALS', {statusCode: 400});
     }
 
     const token = generateToken(user._id, user.email);

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
-import { getFromLocalStorage } from 'src/utils/localStorage';
+import {Injectable} from '@angular/core';
+import {Apollo, gql} from 'apollo-angular';
+import {getFromLocalStorage} from 'src/utils/localStorage';
 
 interface ICheckToken {
   result: boolean;
@@ -38,12 +38,12 @@ export class AuthService {
         },
       })
       .subscribe(
-        ({ data }) => {
+        ({data}) => {
           this.canLogin = data.checkToken.result;
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     return this.canLogin;
   }
