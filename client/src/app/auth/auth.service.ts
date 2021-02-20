@@ -23,7 +23,6 @@ export class AuthService {
   }
   isLoggedIn() {
     this.token = getFromLocalStorage('token');
-    console.log(this.token);
 
     this.apollo
       .query<ICheckTokenRes>({

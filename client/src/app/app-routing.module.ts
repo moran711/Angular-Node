@@ -6,9 +6,9 @@ import {LoginTabsComponent} from './login-tabs/login-tabs.component';
 import {MainPageComponent} from './main-page/main-page.component';
 
 const routes: Routes = [
-  {path: paths.pathToLoginPage, component: LoginTabsComponent},
+  {path: paths.pathToLoginPage.replace('/', ''), component: LoginTabsComponent},
   {
-    path: paths.pathToMainPage,
+    path: paths.pathToMainPage.replace('/', ''),
     canActivate: [AuthGuard],
     component: MainPageComponent,
     pathMatch: 'full',
