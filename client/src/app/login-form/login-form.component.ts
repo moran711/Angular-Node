@@ -9,7 +9,10 @@ import {
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
+import regexps from 'src/config/regexps';
+import snackbarMessages from 'src/config/snackbarMessages';
 import {setToLocalStorage} from 'src/utils/localStorage';
+import {LOGIN_USER} from '../graphql/user.graphql';
 
 export interface ILoginedUser {
   _id?: string;
@@ -40,9 +43,7 @@ export class LoginFormComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
-        ),
+        Validators.pattern(regexps.email),
       ]),
     });
   }
@@ -52,26 +53,31 @@ export class LoginFormComponent {
     this.apollo
       .mutate<ILoginedUserRes>({
         mutation: gql`
-          mutation($loginInput: LoginInput!) {
-            loginUser(loginInput: $loginInput) {
-              lastName
-              token
-              firstName
-            }
-          }
+          ${LOGIN_USER}
         `,
         variables: {loginInput: this.loginForm.value},
       })
       .subscribe(
         ({data}) => {
+          this.loginForm.reset();
           setToLocalStorage('token', data?.loginUser.token || '');
           this.router.navigate(['']);
-          this._snackBar.open('You have successfully logged in!', 'Close', {
-            duration: 2000,
-          });
+          this._snackBar.open(
+            snackbarMessages.loginMessage,
+            snackbarMessages.defaultActionMessage,
+            {
+              duration: 2000,
+            },
+          );
         },
         (error) => {
-          console.log(error);
+          this._snackBar.open(
+            snackbarMessages.errorMessage,
+            snackbarMessages.defaultActionMessage,
+            {
+              duration: 2000,
+            },
+          );
         },
       );
   }

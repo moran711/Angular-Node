@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
 import {getFromLocalStorage} from 'src/utils/localStorage';
+import {CHECK_TOKEN} from '../graphql/user.graphql';
 
 interface ICheckToken {
   result: boolean;
@@ -27,11 +28,7 @@ export class AuthService {
     this.apollo
       .query<ICheckTokenRes>({
         query: gql`
-          query($token: String) {
-            checkToken(token: $token) {
-              result
-            }
-          }
+          ${CHECK_TOKEN}
         `,
         variables: {
           token: this.token,

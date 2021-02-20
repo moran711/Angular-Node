@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import paths from 'src/config/routes';
 import {AuthGuard} from './auth/auth.guard';
 import {LoginTabsComponent} from './login-tabs/login-tabs.component';
 import {MainPageComponent} from './main-page/main-page.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginTabsComponent},
+  {path: paths.pathToLoginPage, component: LoginTabsComponent},
   {
-    path: '',
+    path: paths.pathToMainPage,
     canActivate: [AuthGuard],
     component: MainPageComponent,
     pathMatch: 'full',

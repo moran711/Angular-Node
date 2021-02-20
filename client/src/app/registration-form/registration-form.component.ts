@@ -3,6 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {gql} from '@apollo/client/core';
 import {Apollo} from 'apollo-angular';
+import regexps from 'src/config/regexps';
+import snackbarMessages from 'src/config/snackbarMessages';
+import {REGISTER_USER} from '../graphql/user.graphql';
 
 interface IRegisterUser {
   _id: string;
@@ -34,9 +37,7 @@ export class RegistrationFormComponent {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(20),
-        Validators.pattern(
-          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
-        ),
+        Validators.pattern(regexps.email),
       ]),
       firstName: new FormControl('', [
         Validators.required,
@@ -55,30 +56,30 @@ export class RegistrationFormComponent {
     this.apollo
       .mutate<IRegisterUserRes>({
         mutation: gql`
-          mutation($user: RegisterUserInput!) {
-            registerUser(user: $user) {
-              _id
-              firstName
-              lastName
-              email
-              credential
-            }
-          }
+          ${REGISTER_USER}
         `,
         variables: {user: this.registrationForm.value},
       })
       .subscribe(
         ({data}) => {
           if (data?.registerUser.firstName) {
-            this._snackBar.open('You have successfully registared!', 'Close', {
-              duration: 2000,
-            });
+            this._snackBar.open(
+              snackbarMessages.registrationMessage,
+              snackbarMessages.defaultActionMessage,
+              {
+                duration: 2000,
+              },
+            );
           }
         },
         (error) => {
-          this._snackBar.open('Something went wrong :(', 'Close', {
-            duration: 2000,
-          });
+          this._snackBar.open(
+            snackbarMessages.errorMessage,
+            snackbarMessages.defaultActionMessage,
+            {
+              duration: 2000,
+            },
+          );
         },
       );
   }
