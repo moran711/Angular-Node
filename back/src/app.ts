@@ -4,7 +4,8 @@ import verifyUser from './helpers/verifyToken';
 import UserService from './modules/user/user.service';
 import {resolvers} from './resolvers';
 import {typeDefs} from './typeDefs';
-
+import dotenv from 'dotenv';
+dotenv.config();
 connectDB();
 
 interface IHeaders {

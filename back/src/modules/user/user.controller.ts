@@ -8,6 +8,7 @@ import {
   IRegisterUserInput,
   IUser,
 } from './user.interfaces';
+import userMessages from './user.messages';
 import UserService from './user.service';
 
 class UserController {
@@ -34,7 +35,9 @@ class UserController {
     password,
   }: IRegisterUserInput): Promise<IUser> {
     if (await UserService.getUserByEmail(email)) {
-      throw new UserInputError('USER_ALREADY_EXIST', {statusCode: 400});
+      throw new UserInputError(userMessages.USER_ALREADY_EXIST, {
+        statusCode: 400,
+      });
     }
     const encryptedPassword = await bcrypt.hash(password, 12);
     return await UserService.registerUser({
@@ -48,13 +51,17 @@ class UserController {
     const user = await UserService.getUserByEmail(email);
 
     if (!user) {
-      throw new UserInputError('WRONG_CREDENTIALS', {statusCode: 400});
+      throw new UserInputError(userMessages.WRONG_CREDENTIALS, {
+        statusCode: 400,
+      });
     }
 
     const match = await bcrypt.compare(password, user.credential);
 
     if (!match) {
-      throw new UserInputError('WRONG_CREDENTIALS', {statusCode: 400});
+      throw new UserInputError(userMessages.WRONG_CREDENTIALS, {
+        statusCode: 400,
+      });
     }
 
     const token = generateToken(user._id, user.email);
