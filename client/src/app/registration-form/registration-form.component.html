@@ -1,0 +1,59 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div class="form-header">Registration form</div>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your first name</mat-label>
+    <input
+      matInput
+      #input
+      placeholder="Roman"
+      formControlName="firstName"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your last name</mat-label>
+    <input
+      matInput
+      #input
+      placeholder="Romaniv"
+      formControlName="lastName"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      formControlName="email"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      [type]="hide ? 'password' : 'text'"
+      required
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="registrationForm.invalid"
+  >
+    Submit
+  </button>
+</form>

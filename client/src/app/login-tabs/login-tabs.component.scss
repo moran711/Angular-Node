@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-items: center;
+  padding: 10px;
+  mat-form-field {
+    width: 250px;
+  }
+  .form-header {
+    font-size: 2rem;
+    padding: 10px;
+    margin: 4px;
+  }
+}
