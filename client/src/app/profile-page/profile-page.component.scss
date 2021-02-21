@@ -1,0 +1,13 @@
+.container {
+  margin: 10px;
+  mat-card {
+    color: #424242;
+    background: #fff;
+    mat-list {
+      mat-list-item {
+        color: #424242;
+      }
+    }
+    margin: 0 20%;
+  }
+}

@@ -24,6 +24,8 @@ import {MainPageComponent} from './main-page/main-page.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {ProfilePageComponent} from './profile-page/profile-page.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import {ProfilePageComponent} from './profile-page/profile-page.component';
     MatTabsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatProgressBarModule,
+    MatCardModule,
   ],
   bootstrap: [AppComponent],
   providers: [

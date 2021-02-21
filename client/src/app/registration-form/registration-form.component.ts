@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {gql} from '@apollo/client/core';
 import {Apollo} from 'apollo-angular';
+import {Subscription} from 'rxjs';
 import regexps from 'src/config/regexps';
 import snackbarMessages from 'src/config/snackbarMessages';
 import {REGISTER_USER} from '../../graphql/user.graphql';
@@ -14,7 +15,7 @@ interface IRegisterUser {
   email: string;
   credential: string;
 }
-interface IRegisterUserRes {
+export interface IRegisterUserRes {
   registerUser: IRegisterUser;
 }
 
@@ -23,8 +24,9 @@ interface IRegisterUserRes {
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss'],
 })
-export class RegistrationFormComponent {
+export class RegistrationFormComponent implements OnDestroy {
   registrationForm: FormGroup;
+  private mutationSubscription: Subscription | null = null;
   constructor(private apollo: Apollo, private _snackBar: MatSnackBar) {
     this.registrationForm = new FormGroup({
       email: new FormControl('', [
@@ -53,7 +55,7 @@ export class RegistrationFormComponent {
   }
   hide: boolean = true;
   onSubmit() {
-    this.apollo
+    this.mutationSubscription = this.apollo
       .mutate<IRegisterUserRes>({
         mutation: gql`
           ${REGISTER_USER}
@@ -82,5 +84,8 @@ export class RegistrationFormComponent {
           );
         },
       );
+  }
+  ngOnDestroy(): void {
+    this.mutationSubscription?.unsubscribe();
   }
 }

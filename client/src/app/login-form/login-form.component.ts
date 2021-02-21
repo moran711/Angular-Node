@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,7 @@ import {
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
+import {Subscription} from 'rxjs';
 import regexps from 'src/config/regexps';
 import snackbarMessages from 'src/config/snackbarMessages';
 import {setToLocalStorage} from 'src/utils/localStorage';
@@ -32,8 +33,9 @@ export interface ILoginedUserRes {
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnDestroy {
   loginForm: FormGroup;
+  private mutationSubscription: Subscription | null = null;
   constructor(
     private apollo: Apollo,
     private router: Router,
@@ -50,7 +52,7 @@ export class LoginFormComponent {
 
   hide: boolean = true;
   onSubmit() {
-    this.apollo
+    this.mutationSubscription = this.apollo
       .mutate<ILoginedUserRes>({
         mutation: gql`
           ${LOGIN_USER}
@@ -61,6 +63,7 @@ export class LoginFormComponent {
         ({data}) => {
           this.loginForm.reset();
           setToLocalStorage('token', data?.loginUser.token || '');
+          setToLocalStorage('userId', data?.loginUser._id || '');
           this.router.navigate(['']);
           this._snackBar.open(
             snackbarMessages.loginMessage,
@@ -80,5 +83,8 @@ export class LoginFormComponent {
           );
         },
       );
+  }
+  ngOnDestroy(): void {
+    this.mutationSubscription?.unsubscribe();
   }
 }
