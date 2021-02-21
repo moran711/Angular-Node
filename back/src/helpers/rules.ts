@@ -1,4 +1,5 @@
 import {ApolloError} from 'apollo-server';
+import statusCodes from '../consts/statusCose';
 import userMessages from '../modules/user/user.messages';
 
 const {rule, and} = require('graphql-shield');
@@ -27,18 +28,14 @@ const hasRoles = (roles) =>
 
 const isTheSameUser = and(
   isAuthorized,
-  rule()((parent, args, context, info) =>
-    `${context.user._id}` === args.id
+  rule()((parent, args, context, info) => {
+    return `${context.user._id}` === args.userId
       ? true
       : new ApolloError(
           userMessages.WRONG_CREDENTIALS,
           statusCodes.UNAUTHORIZED,
-        ),
-  ),
+        );
+  }),
 );
 
-module.exports = {
-  hasRoles,
-  isAuthorized,
-  isTheSameUser,
-};
+export {hasRoles, isAuthorized, isTheSameUser};

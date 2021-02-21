@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import paths from 'src/config/routes';
+import {AuthService} from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-nest';
+  title: string = 'angular-nest';
+  pathToProfile: string = paths.pathToProfilePage;
 }

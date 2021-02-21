@@ -1,10 +1,12 @@
-import {ApolloServer} from 'apollo-server';
+import {ApolloServer, makeExecutableSchema} from 'apollo-server';
 import {connectDB} from './db/db.connection';
 import verifyUser from './helpers/verifyToken';
 import UserService from './modules/user/user.service';
 import {resolvers} from './resolvers';
 import {typeDefs} from './typeDefs';
 import dotenv from 'dotenv';
+import {applyMiddleware} from 'graphql-middleware';
+import permissions from './permissions';
 dotenv.config();
 connectDB();
 
@@ -20,9 +22,13 @@ interface IContext {
   req: IReq;
 }
 
+const schema = applyMiddleware(
+  makeExecutableSchema({typeDefs, resolvers}),
+  permissions,
+);
+
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
   context: async ({req}: IContext) => {
     const token = req.headers.token || '';
     if (token) {

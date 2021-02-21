@@ -12,7 +12,7 @@ import {Apollo, gql} from 'apollo-angular';
 import regexps from 'src/config/regexps';
 import snackbarMessages from 'src/config/snackbarMessages';
 import {setToLocalStorage} from 'src/utils/localStorage';
-import {LOGIN_USER} from '../graphql/user.graphql';
+import {LOGIN_USER} from '../../graphql/user.graphql';
 
 export interface ILoginedUser {
   _id?: string;

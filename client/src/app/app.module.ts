@@ -16,22 +16,24 @@ import {MatInputModule} from '@angular/material/input';
 import {LoginFormComponent} from './login-form/login-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RegistrationFormComponent} from './registration-form/registration-form.component';
-import {LoginTabsComponent} from './login-tabs/login-tabs.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FooterComponent} from './footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryCache} from '@apollo/client/core';
 import {MainPageComponent} from './main-page/main-page.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {LoginPageComponent} from './login-page/login-page.component';
+import {ProfilePageComponent} from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    LoginTabsComponent,
+    LoginPageComponent,
     FooterComponent,
     MainPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,

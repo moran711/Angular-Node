@@ -18,6 +18,9 @@ class UserService {
   async getUserByEmail(email: string) {
     return await userModel.findOne({email}).exec();
   }
+  async getUserById(_id: string) {
+    return await userModel.findOne({_id}).exec();
+  }
   async getAllUsers() {
     return await userModel.find();
   }

@@ -3,6 +3,7 @@ import UserController from './user.controller';
 const userQuery = {
   getAllUsers: () => UserController.getAllUsers(),
   checkToken: (parent, args) => UserController.checkToken(args.token),
+  getUserById: (parent, args) => UserController.getUserById(args.userId),
 };
 
 const userMutation = {

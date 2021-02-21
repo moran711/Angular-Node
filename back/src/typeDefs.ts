@@ -6,7 +6,8 @@ const typeDefs = gql`
   ${userInputs}
   type Query {
     getAllUsers: [User]
-    checkToken(token: String): VerifiedToken
+    checkToken(token: String!): VerifiedToken
+    getUserById(userId: ID!): User
   }
   type Mutation {
     registerUser(user: RegisterUserInput!): User

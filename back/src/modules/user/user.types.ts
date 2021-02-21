@@ -20,6 +20,7 @@ const userTypes = `
     credential: String
   }
   type LoginedUser {
+    _id: ID
     firstName: String
     lastName: String
     email: String

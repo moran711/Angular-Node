@@ -3,3 +3,4 @@ const statusCodes = {
   FORBIDDEN: '403',
   NOT_FOUND: '404',
 };
+export default statusCodes;

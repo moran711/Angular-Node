@@ -15,6 +15,9 @@ class UserController {
   async getAllUsers() {
     return await UserService.getAllUsers();
   }
+  async getUserById(userId: string) {
+    return await UserService.getUserById(userId);
+  }
   async checkToken(token: string) {
     const user = verifyUser(token);
 

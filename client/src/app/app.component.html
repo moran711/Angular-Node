@@ -12,6 +12,13 @@
       <a mat-list-item href="#">Link 2</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
+    <div class="sidenav-bottom">
+      <a [routerLink]="pathToProfile" routerLinkActive="active">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">
+          account_circle
+        </mat-icon>
+      </a>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
