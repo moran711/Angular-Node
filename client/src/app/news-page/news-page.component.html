@@ -1,0 +1,29 @@
+<div class="container">
+  <div *ngIf="loading; else elseBlock">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <ng-template #elseBlock>
+    <div class="news-list">
+      <div class="news-item" *ngFor="let newsItem of news">
+        <mat-card>
+          <mat-card-title>{{ newsItem.title }}</mat-card-title>
+          <button
+            mat-raised-button
+            color="primary"
+            [routerLink]="[newsItem._id]"
+          >
+            Open
+          </button>
+          <div class="card-content">
+            <div class="news-author">
+              {{ newsItem.author.firstName + ' ' + newsItem.author.lastName }}
+            </div>
+            <div class="news-creation-date">
+              {{ newsItem.dateOfCreation | date: 'MMM d, y' }}
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
+</div>

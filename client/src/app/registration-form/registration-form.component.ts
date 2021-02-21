@@ -8,7 +8,7 @@ import regexps from 'src/config/regexps';
 import snackbarMessages from 'src/config/snackbarMessages';
 import {REGISTER_USER} from '../../graphql/user.graphql';
 
-interface IRegisterUser {
+export interface IRegisterUser {
   _id: string;
   firstName: string;
   lastName: string;

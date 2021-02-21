@@ -3,6 +3,7 @@ export interface INews {
   author: string;
   title: string;
   text: string;
+  dateOfCreation: Date;
 }
 
 export interface INewsInput {

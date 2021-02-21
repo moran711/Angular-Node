@@ -26,6 +26,9 @@ import {LoginPageComponent} from './login-page/login-page.component';
 import {ProfilePageComponent} from './profile-page/profile-page.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
+import {NewsPageComponent} from './news-page/news-page.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {NewsDetailsPageComponent} from './news-details-page/news-details-page.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import {MatCardModule} from '@angular/material/card';
     FooterComponent,
     MainPageComponent,
     ProfilePageComponent,
+    NewsPageComponent,
+    NewsDetailsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import {MatCardModule} from '@angular/material/card';
     MatSnackBarModule,
     MatProgressBarModule,
     MatCardModule,
+    MatGridListModule,
   ],
   bootstrap: [AppComponent],
   providers: [

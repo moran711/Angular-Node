@@ -11,6 +11,7 @@ const newsTypes = `
     author: User
     title: String
     text: String
+    dateOfCreation: String
   }
 `;
 

@@ -7,6 +7,10 @@ const newsSchema = new mongoose.Schema({
   },
   title: String,
   text: String,
+  dateOfCreation: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.model('News', newsSchema);
