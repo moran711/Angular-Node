@@ -40,7 +40,9 @@ export class NewsPageComponent implements OnInit {
           this.loading = loading;
           this.news = data?.getAllNews;
         },
-        (error) => {},
+        (error) => {
+          this.router.navigate(['']);
+        },
       );
   }
   ngOnDestroy(): void {

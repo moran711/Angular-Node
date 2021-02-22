@@ -1,1 +1,21 @@
-<p>news-details-page works!</p>
+<div class="container">
+  <div *ngIf="loading; else elseBlock">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <ng-template #elseBlock>
+    <mat-card>
+      <mat-card-title>{{ news?.title }}</mat-card-title>
+      <mat-card-content
+        [innerHTML]="news?.text || '' | sanitizeHtml"
+      ></mat-card-content>
+      <div class="card-footer">
+        <div class="news-author">
+          {{ news?.author?.firstName + ' ' + news?.author?.lastName }}
+        </div>
+        <div class="news-creation-date">
+          {{ news?.dateOfCreation | date: 'MMM d, y' }}
+        </div>
+      </div>
+    </mat-card>
+  </ng-template>
+</div>

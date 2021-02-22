@@ -29,6 +29,7 @@ import {MatCardModule} from '@angular/material/card';
 import {NewsPageComponent} from './news-page/news-page.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {NewsDetailsPageComponent} from './news-details-page/news-details-page.component';
+import {SafeHtmlPipe} from './safe-html-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {NewsDetailsPageComponent} from './news-details-page/news-details-page.co
     ProfilePageComponent,
     NewsPageComponent,
     NewsDetailsPageComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
