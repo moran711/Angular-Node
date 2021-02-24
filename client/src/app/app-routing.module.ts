@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import paths from 'src/config/routes';
+import { AddNewsPageComponent } from './add-news-page/add-news-page.component';
 import {AuthGuard} from './auth/auth.guard';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {MainPageComponent} from './main-page/main-page.component';
@@ -30,6 +31,11 @@ const routes: Routes = [
     path: paths.pathToNewsDetailsPage.slice(1),
     canActivate: [AuthGuard],
     component: NewsDetailsPageComponent,
+  },
+  {
+    path: paths.pathToNewsAddPage.slice(1),
+    canActivate: [AuthGuard],
+    component: AddNewsPageComponent,
   },
 ];
 

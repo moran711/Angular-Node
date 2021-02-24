@@ -30,6 +30,7 @@ import {NewsPageComponent} from './news-page/news-page.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {NewsDetailsPageComponent} from './news-details-page/news-details-page.component';
 import {SafeHtmlPipe} from './safe-html-pipe.pipe';
+import { AddNewsPageComponent } from './add-news-page/add-news-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {SafeHtmlPipe} from './safe-html-pipe.pipe';
     NewsPageComponent,
     NewsDetailsPageComponent,
     SafeHtmlPipe,
+    AddNewsPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,8 @@ import statusCodes from '../../consts/statusCose';
 import {newsMessages} from './news.messages';
 
 class NewsController {
-  async addNews(news: INewsInput, userId: number) {
-    return await newsService.addNews(news, userId);
+  async addNews(news: INewsInput, upload:string, userId: number) {
+    return await newsService.addNews(news, upload, userId);
   }
 
   async getNewsById(_id: string) {

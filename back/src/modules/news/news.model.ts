@@ -7,6 +7,7 @@ const newsSchema = new mongoose.Schema({
   },
   title: String,
   text: String,
+  image: String,
   dateOfCreation: {
     type: Date,
     default: Date.now,

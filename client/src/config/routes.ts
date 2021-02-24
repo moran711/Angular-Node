@@ -4,6 +4,7 @@ const paths = {
   pathToProfilePage: '/profile',
   pathToNewsPage: '/news',
   pathToNewsDetailsPage: '/news/:id',
+  pathToNewsAddPage: '/add-news'
 };
 
 export default paths;

@@ -2,9 +2,10 @@ import newsModel from './news.model';
 import {INewsInput} from './news.interfaces';
 
 class NewsService {
-  async addNews(data: INewsInput, userId: number) {
+  async addNews(data: INewsInput, image: string, userId: number) {
     const news = new newsModel({
       ...data,
+      image,
       author: userId,
     });
     return await news.save();

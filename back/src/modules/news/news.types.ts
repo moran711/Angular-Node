@@ -2,6 +2,7 @@ const newsInputs = `
   input NewsInput {
     title: String!
     text: String!
+    image: String!
   }
 `;
 
@@ -11,6 +12,7 @@ const newsTypes = `
     author: User
     title: String
     text: String
+    image: String
     dateOfCreation: String
   }
 `;

@@ -1,0 +1,12 @@
+<label>
+  <button
+    mat-raised-button
+    color="primary"
+  >
+    Add image
+  </button>
+  <input #imageInput
+         type="file"
+         accept="image/*"
+         (change)="processFile(imageInput)">
+</label>

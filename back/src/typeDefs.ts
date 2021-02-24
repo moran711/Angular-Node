@@ -2,6 +2,7 @@ import {gql} from 'apollo-server';
 import {userInputs, userTypes} from './modules/user/user.types';
 import {newsInputs, newsTypes} from './modules/news/news.types';
 const typeDefs = gql`
+  scalar Upload
   ${userTypes}
   ${newsTypes}
   ${newsInputs}
@@ -14,7 +15,7 @@ const typeDefs = gql`
     getNewsById(id: ID!): News
   }
   type Mutation {
-    addNews(data: NewsInput): News
+    addNews(data: NewsInput!): News
     registerUser(user: RegisterUserInput!): User
     loginUser(loginInput: LoginInput!): LoginedUser
   }
