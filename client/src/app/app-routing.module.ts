@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import paths from 'src/config/routes';
-import { AddNewsPageComponent } from './add-news-page/add-news-page.component';
-import {AuthGuard} from './auth/auth.guard';
-import {LoginPageComponent} from './login-page/login-page.component';
-import {MainPageComponent} from './main-page/main-page.component';
-import {NewsDetailsPageComponent} from './news-details-page/news-details-page.component';
-import {NewsPageComponent} from './news-page/news-page.component';
-import {ProfilePageComponent} from './profile-page/profile-page.component';
+import {AddNewsPageComponent} from './pages/add-news-page/add-news-page.component';
+import {AuthGuard} from './shared/auth/auth.guard';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
+import {MainPageComponent} from './pages/main-page/main-page.component';
+import {NewsDetailsPageComponent} from './pages/news-details-page/news-details-page.component';
+import {NewsPageComponent} from './pages/news-page/news-page.component';
+import {ProfilePageComponent} from './pages/profile-page/profile-page.component';
 
 const routes: Routes = [
   {path: paths.pathToLoginPage.slice(1), component: LoginPageComponent},

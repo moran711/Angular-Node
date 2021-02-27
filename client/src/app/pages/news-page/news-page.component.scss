@@ -1,12 +1,28 @@
 .container {
   padding: 10px;
   max-width: 1280px;
-
   margin: auto;
+  .add-news-btn {
+    margin: 10px;
+  }
+
   mat-card {
     color: #424242;
     background: #fff;
     min-width: 300px;
+    mat-card-title {
+      margin: 10px;
+    }
+    .image-container {
+      margin: 10px auto;
+      width: 250px;
+      height: auto;
+      img {
+        width: 250px;
+        height: auto;
+        padding: 10px;
+      }
+    }
     & .card-content {
       display: flex;
       flex-wrap: wrap;

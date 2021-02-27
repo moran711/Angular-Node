@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
 import {getFromLocalStorage} from 'src/utils/localStorage';
-import {CHECK_TOKEN} from '../../graphql/user.graphql';
+import {CHECK_TOKEN} from '../../../graphql/user.graphql';
 
 interface ICheckToken {
   result: boolean;

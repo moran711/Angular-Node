@@ -1,0 +1,47 @@
+<div class="container">
+  <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <img [src]="newsForm.value.image || ''" mat-card-image />
+      <mat-card-actions>
+        <input
+          id="input-file-id"
+          type="file"
+          hidden
+          accept="image/*"
+          (change)="processFile(imageInput)"
+          #imageInput
+        />
+        <label
+          for="input-file-id"
+          class="mat-focus-indicator mat-raised-button mat-button-base mat-primary"
+          >Add photo</label
+        >
+      </mat-card-actions>
+    </mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter news title</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="News title"
+        formControlName="title"
+        required
+      />
+    </mat-form-field>
+    <div class="editor-container">
+      <angular-editor
+        id="news-text"
+        formControlName="text"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="newsForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</div>

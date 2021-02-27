@@ -13,24 +13,25 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
-import {LoginFormComponent} from './login-form/login-form.component';
+import {LoginFormComponent} from './components/login-form/login-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RegistrationFormComponent} from './registration-form/registration-form.component';
+import {RegistrationFormComponent} from './components/registration-form/registration-form.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {FooterComponent} from './footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryCache} from '@apollo/client/core';
-import {MainPageComponent} from './main-page/main-page.component';
+import {MainPageComponent} from './pages/main-page/main-page.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {LoginPageComponent} from './login-page/login-page.component';
-import {ProfilePageComponent} from './profile-page/profile-page.component';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
+import {ProfilePageComponent} from './pages/profile-page/profile-page.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
-import {NewsPageComponent} from './news-page/news-page.component';
+import {NewsPageComponent} from './pages/news-page/news-page.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {NewsDetailsPageComponent} from './news-details-page/news-details-page.component';
+import {NewsDetailsPageComponent} from './pages/news-details-page/news-details-page.component';
 import {SafeHtmlPipe} from './safe-html-pipe.pipe';
-import { AddNewsPageComponent } from './add-news-page/add-news-page.component';
+import {AddNewsPageComponent} from './pages/add-news-page/add-news-page.component';
+import {AngularEditorModule} from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { AddNewsPageComponent } from './add-news-page/add-news-page.component';
     MatProgressBarModule,
     MatCardModule,
     MatGridListModule,
+    AngularEditorModule,
   ],
   bootstrap: [AppComponent],
   providers: [

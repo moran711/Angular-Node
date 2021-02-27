@@ -4,7 +4,26 @@ export const GET_ALL_NEWS: string = `
       _id
       text
       title
+      image
       dateOfCreation
+      author {
+        lastName
+        firstName
+        _id
+        email
+      }
+    }
+  }
+`;
+
+export const ADD_NEWS: string = `
+  mutation($data: NewsInput!) {
+    addNews(data: $data) {
+      _id
+      text
+      title
+      dateOfCreation
+      image
       author {
         lastName
         firstName
@@ -21,6 +40,7 @@ export const GET_NEWS_BY_ID: string = `
       _id
       text
       title
+      image
       dateOfCreation
       author {
         lastName

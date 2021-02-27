@@ -7,6 +7,7 @@ export interface INews {
 }
 
 export interface INewsInput {
+  image: string;
   title: string;
   text: string;
 }

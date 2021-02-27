@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="add-news-btn">
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="[pathToNewsAddPage]"
+    >
+      Add news
+    </button>
+  </div>
   <div *ngIf="loading; else elseBlock">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
@@ -7,6 +16,9 @@
       <div class="news-item" *ngFor="let newsItem of news">
         <mat-card>
           <mat-card-title>{{ newsItem.title }}</mat-card-title>
+          <div class="image-container">
+            <img [src]="newsItem.image" mat-card-image />
+          </div>
           <button
             mat-raised-button
             color="primary"

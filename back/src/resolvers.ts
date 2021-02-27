@@ -1,4 +1,4 @@
-import { GraphQLUpload } from 'apollo-server';
+import {GraphQLUpload} from 'apollo-server';
 import {newsMutation, newsQuery} from './modules/news/news.resolver';
 import userController from './modules/user/user.controller';
 import {userMutation, userQuery} from './modules/user/user.resolver';

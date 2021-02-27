@@ -6,7 +6,7 @@ import {Apollo} from 'apollo-angular';
 import {Subscription} from 'rxjs';
 import regexps from 'src/config/regexps';
 import snackbarMessages from 'src/config/snackbarMessages';
-import {REGISTER_USER} from '../../graphql/user.graphql';
+import {REGISTER_USER} from '../../../graphql/user.graphql';
 
 export interface IRegisterUser {
   _id: string;

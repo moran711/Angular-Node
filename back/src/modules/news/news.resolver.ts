@@ -7,7 +7,7 @@ const newsQuery = {
 
 const newsMutation = {
   addNews: async (parent, args, context) =>
-    newsController.addNews(args.data, args.image,context.user.id),
+    newsController.addNews(args.data, context.user.id),
 };
 
 export {newsMutation, newsQuery};
