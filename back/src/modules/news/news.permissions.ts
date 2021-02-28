@@ -2,7 +2,7 @@ import {or, allow} from 'graphql-shield';
 import {isAuthorized} from '../../helpers/rules';
 
 const newsPermissionsQuery = {
-  getAllNews: allow,
+  getAllNews: isAuthorized,
   getNewsById: isAuthorized,
 };
 const newsPermissionsMutation = {

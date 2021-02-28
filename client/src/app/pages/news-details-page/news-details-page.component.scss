@@ -1,10 +1,19 @@
-mat-card-title {
-  text-align: center;
-}
-.card-footer {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.container {
+  margin: 10px;
+  mat-card {
+    max-width: 900px;
+    margin: auto;
+    padding: 10px;
+
+    mat-card-title {
+      text-align: center;
+    }
+    .card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 }

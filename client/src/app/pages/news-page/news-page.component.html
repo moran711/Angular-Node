@@ -8,11 +8,11 @@
       Add news
     </button>
   </div>
-  <div *ngIf="loading; else elseBlock">
+  <div *ngIf="loading; else newsListBlock">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-  <ng-template #elseBlock>
-    <div class="news-list">
+  <ng-template #newsListBlock>
+    <div class="news-list" *ngIf="news.length; else noNewsBlock">
       <div class="news-item" *ngFor="let newsItem of news">
         <mat-card>
           <mat-card-title>{{ newsItem.title }}</mat-card-title>
@@ -37,5 +37,8 @@
         </mat-card>
       </div>
     </div>
+    <ng-template #noNewsBlock>
+      {{ noNewsMsg }}
+    </ng-template>
   </ng-template>
 </div>

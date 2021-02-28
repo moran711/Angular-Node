@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
 import {Subscription} from 'rxjs';
 import regexps from 'src/config/regexps';
+import paths from 'src/config/routes';
 import snackbarMessages from 'src/config/snackbarMessages';
 import {setToLocalStorage} from 'src/utils/localStorage';
 import {LOGIN_USER} from '../../../graphql/user.graphql';
@@ -34,6 +35,7 @@ export interface ILoginedUserRes {
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnDestroy {
+  pathToMainPage: string = paths.pathToMainPage;
   loginForm: FormGroup;
   private mutationSubscription: Subscription | null = null;
   constructor(

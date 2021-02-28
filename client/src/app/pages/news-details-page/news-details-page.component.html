@@ -1,8 +1,8 @@
 <div class="container">
-  <div *ngIf="loading; else elseBlock">
+  <div *ngIf="loading; else newsBlock">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-  <ng-template #elseBlock>
+  <ng-template #newsBlock>
     <mat-card>
       <mat-card-title>{{ news?.title }}</mat-card-title>
       <mat-card-content

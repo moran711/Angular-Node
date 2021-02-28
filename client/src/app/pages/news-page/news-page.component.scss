@@ -9,18 +9,18 @@
   mat-card {
     color: #424242;
     background: #fff;
-    min-width: 300px;
+    min-width: 150px;
     mat-card-title {
       margin: 10px;
     }
     .image-container {
       margin: 10px auto;
-      width: 250px;
+      width: 100%;
       height: auto;
       img {
-        width: 250px;
+        width: 100%;
         height: auto;
-        padding: 10px;
+        padding-top: 10px;
       }
     }
     & .card-content {

@@ -5,7 +5,7 @@ import userMessages from '../modules/user/user.messages';
 const {rule, and} = require('graphql-shield');
 
 const isAuthorized = rule()((parent, args, context, info) =>
-  context.user
+  context.user._id
     ? true
     : new ApolloError(
         userMessages.USER_NOT_AUTHORIZED,

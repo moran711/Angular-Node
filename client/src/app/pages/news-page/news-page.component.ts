@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
 import {Subscription} from 'rxjs';
+import {newsText} from 'src/config/news/news.text';
 import paths from 'src/config/routes';
 import {GET_ALL_NEWS} from 'src/graphql/news.graphql';
+import {getFromLocalStorage} from 'src/utils/localStorage';
 import {IRegisterUser} from '../../components/registration-form/registration-form.component';
 
 export interface INews {
@@ -26,7 +28,8 @@ export interface INewsRes {
 })
 export class NewsPageComponent implements OnInit {
   news: INews[] = [];
-  loading: boolean = false;
+  noNewsMsg: string = newsText.noNewsMessage;
+  loading: boolean = true;
   pathToNewsAddPage: string = paths.pathToNewsAddPage;
   private querySubscription: Subscription | null = null;
   constructor(private apollo: Apollo, private router: Router) {}
@@ -36,11 +39,16 @@ export class NewsPageComponent implements OnInit {
         query: gql`
           ${GET_ALL_NEWS}
         `,
+        context: {
+          headers: {
+            token: getFromLocalStorage('token'),
+          },
+        },
       })
       .subscribe(
-        ({data, loading}) => {
-          this.loading = loading;
+        ({data}) => {
           this.news = data?.getAllNews;
+          this.loading = false;
         },
         (error) => {
           this.router.navigate(['']);

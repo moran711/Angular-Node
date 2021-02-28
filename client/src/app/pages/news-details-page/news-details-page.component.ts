@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
 import {Subscription} from 'rxjs';
 import {GET_NEWS_BY_ID} from 'src/graphql/news.graphql';
+import {getFromLocalStorage} from 'src/utils/localStorage';
 import {INews} from '../news-page/news-page.component';
 
 export interface INewsRes {
@@ -17,7 +18,7 @@ export interface INewsRes {
 export class NewsDetailsPageComponent implements OnInit {
   id: string = '';
   news: INews | null = null;
-  loading: boolean = false;
+  loading: boolean = true;
   private querySubscription: Subscription | null = null;
   constructor(
     private apollo: Apollo,
@@ -36,11 +37,16 @@ export class NewsDetailsPageComponent implements OnInit {
         variables: {
           id: this.id,
         },
+        context: {
+          headers: {
+            token: getFromLocalStorage('token'),
+          },
+        },
       })
       .subscribe(
         ({data, loading}) => {
-          this.loading = loading;
           this.news = data?.getNewsById;
+          this.loading = false;
         },
         (error) => {
           this.router.navigate(['']);
