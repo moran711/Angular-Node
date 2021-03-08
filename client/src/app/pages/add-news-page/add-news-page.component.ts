@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
@@ -18,7 +18,7 @@ interface IAddNewsRes {
   templateUrl: './add-news-page.component.html',
   styleUrls: ['./add-news-page.component.scss'],
 })
-export class AddNewsPageComponent implements OnInit {
+export class AddNewsPageComponent implements OnInit, OnDestroy {
   private mutationSubscription: Subscription | null = null;
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -118,5 +118,8 @@ export class AddNewsPageComponent implements OnInit {
           );
         },
       );
+  }
+  ngOnDestroy() {
+    this.mutationSubscription?.unsubscribe();
   }
 }

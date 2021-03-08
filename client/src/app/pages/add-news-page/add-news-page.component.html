@@ -1,7 +1,10 @@
 <div class="container">
   <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
     <mat-card>
-      <img [src]="newsForm.value.image || ''" mat-card-image />
+      <img
+        [src]="newsForm.value.image || 'assets/images/news-default.jpg'"
+        mat-card-image
+      />
       <mat-card-actions>
         <input
           id="input-file-id"

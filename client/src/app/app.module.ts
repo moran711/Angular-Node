@@ -29,7 +29,7 @@ import {MatCardModule} from '@angular/material/card';
 import {NewsPageComponent} from './pages/news-page/news-page.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {NewsDetailsPageComponent} from './pages/news-details-page/news-details-page.component';
-import {SafeHtmlPipe} from './safe-html-pipe.pipe';
+import {SafeHtmlPipe} from './pipes/safe-html-pipe.pipe';
 import {AddNewsPageComponent} from './pages/add-news-page/add-news-page.component';
 import {AngularEditorModule} from '@kolkov/angular-editor';
 
